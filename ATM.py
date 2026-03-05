@@ -3,24 +3,20 @@
 # opcion 1. consultar saldo
 balance = 1000
 print("Hi! Welcome to the ATM ")
-op_n=int(input("How many transactions do you want to make ?: "))
-contador= 0
-while contador != op_n:
-    print("\n1.Consult your actual balance \n2.Withdraw money\n3.Deposit money\n4.Get out")
-    atm_op=int(input("Please choose an option: "))
-    if atm_op == 1:
-        print(f"Your atual balance is {balance}")
-    elif atm_op == 2:
-        print(withdraw_money())
-    elif atm_op== 3:
-        print(deposit_money())
-    elif atm_op ==4:
-        print("Thank you for using ATM, have a nice day")
-        break
-    else: 
-        print("This option is invalid, please try again ")
 
-    def withdraw_money(): 
+def op ():
+    try:
+        op_n=int(input("How many transactions do you want to make ?: "))
+        if op_n > 0:
+            return op_n
+        else:
+            print("Invalid option, please try again")
+            return op()
+    except ValueError:
+        print("Invalid option, please try again")
+        return op()
+
+def withdraw_money(): 
         try: 
             amount= float(input("Type the amount of money to withdraw: "))
             new_balance= balance-amount 
@@ -36,7 +32,7 @@ while contador != op_n:
         except ValueError:
             print("Invalid option, please try again")
             return withdraw_money()
-    def deposit_money():
+def deposit_money():
         try: 
             deposit=  float(input("Type the amount of money that you want to deposit: "))
             new_balance2= balance + deposit
@@ -50,7 +46,22 @@ while contador != op_n:
         except ValueError:
             print("Invalid option, please try again")
             return deposit_money()
-    contador= contador + 1
+        
+for i in range (op()):
+    print("\n1.Consult your actual balance \n2.Withdraw money\n3.Deposit money\n4.Get out")
+    atm_op=int(input("Please choose an option: "))
 
+    if atm_op == 1: 
+        print(f"Your atual balance is {balance}")
+    elif atm_op == 2:
+        print(withdraw_money())
+    elif atm_op== 3:
+        print(deposit_money())
+    elif atm_op ==4:
+        print("Thank you for using ATM, have a nice day")
+        break
+    else: 
+        print("This option is invalid, please try again ")
 
+    
 
