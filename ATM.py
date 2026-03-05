@@ -1,11 +1,12 @@
 # ATM
-balance = 1000
-
 # We have to ask to the client how many operations do he/she wanna do
-
 # opcion 1. consultar saldo
-while True:
-    print("\nHi! Welcome to the ATM \n1.Consult your actual balance \n2.Withdraw money\n3.Deposit money\n4.Get out")
+balance = 1000
+print("Hi! Welcome to the ATM ")
+op_n=int(input("How many transactions do you want to make ?: "))
+contador= 0
+while contador != op_n:
+    print("\n1.Consult your actual balance \n2.Withdraw money\n3.Deposit money\n4.Get out")
     atm_op=int(input("Please choose an option: "))
     if atm_op == 1:
         print(f"Your atual balance is {balance}")
@@ -49,6 +50,7 @@ while True:
         except ValueError:
             print("Invalid option, please try again")
             return deposit_money()
+    contador= contador + 1
 
 
 
