@@ -15,11 +15,9 @@ def op ():
     except ValueError:
         print("Invalid option, please try again")
         return op()
-
+    
 def withdraw_money(): 
         try: 
-            amount= float(input("Type the amount of money to withdraw: "))
-            new_balance= balance-amount 
             if amount > balance :
                 print("There is not enough amount of money")
                 return withdraw_money()
@@ -34,8 +32,7 @@ def withdraw_money():
             return withdraw_money()
 def deposit_money():
         try: 
-            deposit=  float(input("Type the amount of money that you want to deposit: "))
-            new_balance2= balance + deposit
+            
             if deposit > 0: 
                 print(f"The new balance is: {new_balance2} ")
                 return deposit
@@ -51,11 +48,15 @@ for i in range (op()):
     print("\n1.Consult your actual balance \n2.Withdraw money\n3.Deposit money\n4.Get out")
     atm_op=int(input("Please choose an option: "))
 
-    if atm_op == 1: 
+    if atm_op == 1:
         print(f"Your atual balance is {balance}")
     elif atm_op == 2:
+        amount= float(input("Type the amount of money to withdraw: "))
+        new_balance= balance-amount 
         print(withdraw_money())
     elif atm_op== 3:
+        deposit=  float(input("Type the amount of money that you want to deposit: "))
+        new_balance2= balance + deposit
         print(deposit_money())
     elif atm_op ==4:
         print("Thank you for using ATM, have a nice day")
